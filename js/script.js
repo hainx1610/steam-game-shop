@@ -13,6 +13,8 @@ const mainSectionTitle = document.querySelector("#main-section-title")
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
 const mainContainer = document.querySelector(".main-container")
+const singleSlot = document.querySelector(".single-slot")
+const gameInfo = document.querySelector(".game-info")
 
 let gamesList = [];
 let pageCounter = 1;
@@ -49,7 +51,7 @@ const getSingle = async (appId) => {
         const response = await fetch(BASE_URL + `single-game/${appId}`);
         if (response.ok) {
             const data = await response.json();
-            console.log("data", data)
+            // console.log("data", data)
             return data;
         }
     } catch (error) {
@@ -80,6 +82,7 @@ const renderGames = async () => {
             allGamesArea.appendChild(divElement);
             divElement.addEventListener("click", () => {
                 appId = game.appid;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 renderSingle()
             })
         });
@@ -113,6 +116,7 @@ const renderFeaturedGames = async () => {
             featuredArea.appendChild(divElement);
             divElement.addEventListener("click", e => {
                 appId = game.appid;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 renderSingle()
             })
         });
@@ -134,6 +138,7 @@ const renderGenres = async () => {
             genresList.appendChild(spanElement);
             spanElement.addEventListener("click", () => {
                 mainSectionTitle.textContent = `Games by genre: ${item.name}`
+                singleSlot.classList.add("hidden")
                 featuredArea.classList.add("hidden");
                 allGamesArea.innerHTML = "";
                 queryWord = "genres";
@@ -160,6 +165,7 @@ const renderTags = async () => {
             tagsList.appendChild(spanElement);
             spanElement.addEventListener("click", () => {
                 mainSectionTitle.textContent = `Games by tags: ${item.name}`
+                singleSlot.classList.add("hidden")
                 featuredArea.classList.add("hidden");
                 allGamesArea.innerHTML = "";
                 queryWord = "steamspy_tags";
@@ -177,23 +183,20 @@ const renderTags = async () => {
 const renderSingle = async () => {
     try {
         // get games from the API
-        mainContainer.innerHTML = ""
-        mainContainer.textContent = "Loading data..."; //for slow Internet
+        singleSlot.classList.remove("hidden")
+
         const data = await getSingle(appId);
         const game = data["data"];
-        mainContainer.textContent = ""; //loading done!        
+        console.log(game["background"])
+        singleSlot.children[0].setAttribute("src", `${game["header_image"]}`)
 
-        const divElement = document.createElement("div")
-        divElement.className += "game-slot bg-blue-800 w-80 h-52 mb-6 md:mx-3 hover:cursor-pointer hover:brightness-90";
-        divElement.innerHTML = `<img src=${game["header_image"]} alt="" class="w-[100%] h-[75%]">
-        <div class="game-info h-[25%] flex justify-between items-center px-1 text-blue-300">
-            <p class="title">${game.name}</p>
-            <span class="price">$${game.price}</span>
-        </div>
-        <p>${game.description}</p>`;
-
-        mainContainer.appendChild(divElement);
-
+        gameInfo.style.backgroundImage = `url('${game.background}')`;
+        gameInfo.children[0].textContent = game.name
+        gameInfo.children[1].textContent = `Price: $${game.price}`
+        gameInfo.children[2].textContent = `Release date: ${game["release_date"].slice(0, 10)}`
+        gameInfo.children[3].textContent = `Developed by: ${game["developer"].join(", ")}`
+        gameInfo.children[4].textContent = `Categories: ${game["categories"].join(", ")}`
+        gameInfo.children[5].textContent = `${game["description"]}`
 
     } catch (error) {
         console.log("error", error);

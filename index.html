@@ -19,11 +19,11 @@
             <!-- logo -->
             <div class="logo">
                 <!-- <img src="" width="100px" height="auto" alt=""> -->
-                <a href="#" class="hover:brightness-75">Home</a>
+                <a href="#" class="hover:brightness-75">⌂ Home</a>
             </div>
             <!-- menu items -->
             <div class="hidden md:flex space-x-6">
-                <a href="#" class="hover:brightness-75">Top 🔼</a>
+                <a href="#" class="hover:brightness-75">Top ↑</a>
                 <a href="https://store.steampowered.com/" class="hover:brightness-75">STEAM</a>
                 <a href="#" class="hover:brightness-75">About</a>
             </div>
@@ -35,10 +35,10 @@
             </button>
         </div>
         <!-- mobile menu -->
-        <div id="menu" class="absolute flex-col items-center hidden self-end py-8 mt-10 text-veryDarkBlue
-        space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
+        <div id="menu" class="absolute flex-col items-center hidden self-end py-8 mt-6 text-veryDarkBlue
+        space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
             <a href="#" class="hover:text-darkGrayishBlue">Top 🔼</a>
-            <a href="#" class="hover:text-darkGrayishBlue">STEAM</a>
+            <a href="https://store.steampowered.com/" class="hover:text-darkGrayishBlue">STEAM</a>
             <a href="#" class="hover:text-darkGrayishBlue">About</a>
         </div>
     </nav>
@@ -67,6 +67,22 @@
             </div>
             <!-- flex container for featured & all games areas -->
             <div class="main-container flex flex-col items-center w-full">
+                <div class="single-slot hidden bg-blue-800 w-80 h-[35rem] md:w-[40rem] md:h-[40rem]  my-6">
+                    <img src="" alt="" class="w-[320px] h-[156px] md:w-[640px] md:h-[312px]">
+                    <div class="game-info h-[405px] md:h-[328px] px-3 text-sm md:text-base flex flex-col justify-around 
+                    items-center text-blue-300 bg-cover bg-center">
+                        <p class="title text-base"></p>
+                        <p class="price text-base"></p>
+                        <p class="release"></p>
+                        <p class="developer"></p>
+                        <p class="category"></p>
+                        <p class="description text-white"></p>
+                    </div>
+
+                </div>
+
+
+
 
                 <h2 class="mt-6 text-blue-200 text-2xl">Featured games</h2>
                 <div id="featured-area"
