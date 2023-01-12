@@ -25,12 +25,16 @@
     transition: all 0.5s;
 }
 
+.hamburger-top {
+    transform: translateY(4px);
+}
+
 .hamburger-middle {
-    transform: translateY(7px);
+    transform: translateY(12px);
 }
 
 .hamburger-bottom {
-    transform: translateY(14px);
+    transform: translateY(20px);
 }
 
 .open {
@@ -39,7 +43,7 @@
 }
 
 .open .hamburger-top {
-    transform: rotate(45deg) translateY(6px) translate(6px);
+    transform: rotate(45deg) translateY(9px) translate(9px);
 }
 
 .open .hamburger-middle {
@@ -47,5 +51,5 @@
 }
 
 .open .hamburger-bottom {
-    transform: rotate(-45deg) translateY(6px) translate(-6px);
+    transform: rotate(-45deg) translateY(9px) translate(-9px);
 }

@@ -13,19 +13,19 @@
 <body>
     <!-- navbar -->
     <!-- relative for absolute hamburger menu -->
-    <nav class="relative mx-auto p-6 bg-veryDarkBlue text-white">
+    <nav class="fixed w-[100%] mx-auto p-6 bg-veryDarkBlue text-white">
         <!-- flex container -->
         <div class="flex items-center justify-between">
             <!-- logo -->
-            <div class="pt-2">
+            <div class="logo">
                 <!-- <img src="" width="100px" height="auto" alt=""> -->
-                <a href="#" class="hover:text-darkGrayishBlue">Home</a>
+                <a href="#" class="hover:brightness-75">Home</a>
             </div>
             <!-- menu items -->
             <div class="hidden md:flex space-x-6">
-                <a href="#" class="hover:text-darkGrayishBlue">Featured</a>
-                <a href="#" class="hover:text-darkGrayishBlue">STEAM</a>
-                <a href="#" class="hover:text-darkGrayishBlue">About</a>
+                <a href="#" class="hover:brightness-75">Top 🔼</a>
+                <a href="https://store.steampowered.com/" class="hover:brightness-75">STEAM</a>
+                <a href="#" class="hover:brightness-75">About</a>
             </div>
             <!-- hamburger icon -->
             <button id="menu-btn" class=" block hamburger md:hidden focus:outline-none ">
@@ -37,40 +37,58 @@
         <!-- mobile menu -->
         <div id="menu" class="absolute flex-col items-center hidden self-end py-8 mt-10 text-veryDarkBlue
         space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-            <a href="#" class="hover:text-darkGrayishBlue">Featured</a>
+            <a href="#" class="hover:text-darkGrayishBlue">Top 🔼</a>
             <a href="#" class="hover:text-darkGrayishBlue">STEAM</a>
             <a href="#" class="hover:text-darkGrayishBlue">About</a>
         </div>
     </nav>
 
     <!-- main section -->
-    <section id="main-section">
+    <section id="main-section" class="pt-[72px]">
         <!-- flex container -->
         <div class="flex flex-col md:flex-row bg-steamNavy">
             <div id="search-area" class="pt-6">
-                <form action="#" class="flex justify-center mb-3 md:ml-6">
-                    <input type="text" placeholder="search" class="bg-blue-200">
-                    <button class="bg-blue-500 w-6">🔍</button>
-                </form>
-                <div id="genres-list" class="flex justify-around md:flex-col md:ml-6 text-blue-400 ">
-                    <a href="#">Action</a>
-                    <a href="#">FPS</a>
-                    <a href="#">RPG</a>
-                    <a href="#">Sport</a>
+                <div class="flex justify-center mb-3 md:ml-6">
+
+                    <input id="search-input" type="text" placeholder="search by name" class="bg-blue-200">
+                    <button id="search-btn" class="bg-blue-500 w-6 hover:brightness-125">🔍</button>
+                </div>
+
+                <div id="genres-list"
+                    class="hidden md:flex md:flex-col md:justify-center md:ml-6 md:mb-6 md:space-x-0 text-blue-400 ">
+                    <h3 class="my-2 text-blue-200 text-xl">Search by genre:</h3>
+
+                </div>
+
+                <div id="tags-list"
+                    class="hidden md:flex md:flex-col md:justify-center md:ml-6 md:mb-6 md:space-x-0 text-blue-400 ">
+                    <h3 class="my-2 text-blue-200 text-xl">Tags:</h3>
                 </div>
             </div>
-            <div id="games-area" class="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center p-6">
-                <!-- <div class="game-slot bg-blue-800 w-80 h-52 mb-6 md:mx-3">
-                    <img src="img/test-image.jpg" alt="" class="w-[100%] h-[75%]">
-                    <div class="game-info h-[25%] flex justify-between items-center px-1 text-blue-300">
-                        <p class="title">Game 1</p>
-                        <span class="price">$999</span>
-                    </div>
-                </div> -->
+            <!-- flex container for featured & all games areas -->
+            <div class="main-container flex flex-col items-center w-full">
 
+                <h2 class="mt-6 text-blue-200 text-2xl">Featured games</h2>
+                <div id="featured-area"
+                    class="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center p-6">
+
+                </div>
+                <h2 id="main-section-title" class="mt-6 text-blue-200 text-2xl">All games</h2>
+
+                <div id="all-games-area"
+                    class="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center p-6">
+
+                </div>
+                <p class="loading-msg"></p>
+                <button class="more-games w-36 rounded-sm mb-6 hover:cursor-pointer
+                     hover:brightness-90 bg-blue-400 text-white">Load more games
+                </button>
             </div>
+
         </div>
     </section>
+
+
 
 </body>
 
