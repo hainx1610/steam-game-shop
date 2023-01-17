@@ -22,43 +22,6 @@ let queryWord = "q";
 let queryValue = "";
 let appId = 0;
 let loadingMode = "all";
-//   try {
-//     const response = await fetch(
-//       BASE_URL + `games?${queryWord}=${queryValue}&page=${pageCounter}`
-//     );
-//     if (response.ok) {
-//       const data = await response.json();
-//       return data;
-//     }
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// };
-
-// const getOtherAPIs = async (queryType) => {
-//   try {
-//     const response = await fetch(BASE_URL + queryType);
-//     if (response.ok) {
-//       const data = await response.json();
-//       return data;
-//     }
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// };
-
-// const getSingle = async (appId) => {
-//   try {
-//     const response = await fetch(BASE_URL + `single-game/${appId}`);
-//     if (response.ok) {
-//       const data = await response.json();
-//       // console.log("data", data)
-//       return data;
-//     }
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// };
 
 const getData = async (dataType) => {
   try {
@@ -80,38 +43,6 @@ const getData = async (dataType) => {
     console.log("error", error);
   }
 };
-//   try {
-//     // get games from the API
-//     loadingMsg.textContent = "Loading data..."; //for slow Internet
-//     const data = await getData(dataType);
-//     gamesList = data["data"];
-//     if (!gamesList.length) {
-//       featuredArea.textContent = "No games found!";
-//       return;
-//     }
-//     loadingMsg.textContent = ""; //loading done!
-
-//     gamesList.forEach((game) => {
-//       const divElement = document.createElement("div");
-//       divElement.className +=
-//         "game-slot bg-blue-800 w-80 h-52 mb-6 md:mx-3 hover:cursor-pointer hover:brightness-90";
-//       divElement.innerHTML = `<img src=${game["header_image"]} alt="" class="w-[100%] h-[75%]">
-//         <div class="game-info h-[25%] flex justify-between items-center px-1 text-blue-300">
-//             <p class="title">${game.name}</p>
-//             <span class="price">$${game.price}</span>
-//         </div>`;
-//       allGamesArea.appendChild(divElement);
-//       divElement.addEventListener("click", () => {
-//         appId = game.appid;
-//         window.scrollTo({ top: 0, behavior: "smooth" });
-//         renderSingle();
-//       });
-//     });
-//     pageCounter++;
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// };
 
 const renderFeaturedGames = async () => {
   try {
@@ -237,9 +168,8 @@ const renderSingle = async () => {
     // get games from the API
     singleSlot.classList.remove("hidden");
 
-    const data = await getData(appId);
+    const data = await getData("single");
     const game = data["data"];
-    console.log(game["background"]);
     singleSlot.children[0].setAttribute("src", `${game["header_image"]}`);
 
     gameInfo.style.backgroundImage = `url('${game.background}')`;
