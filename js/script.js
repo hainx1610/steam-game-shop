@@ -22,8 +22,6 @@ let queryWord = "q";
 let queryValue = "";
 let appId = 0;
 let loadingMode = "all";
-
-// const getGames = async () => {
 //   try {
 //     const response = await fetch(
 //       BASE_URL + `games?${queryWord}=${queryValue}&page=${pageCounter}`
@@ -82,8 +80,6 @@ const getData = async (dataType) => {
     console.log("error", error);
   }
 };
-
-// const renderGames = async (dataType) => {
 //   try {
 //     // get games from the API
 //     loadingMsg.textContent = "Loading data..."; //for slow Internet
